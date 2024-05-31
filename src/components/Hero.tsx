@@ -2,7 +2,6 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { LogoVertical } from './Logo'
 import AppMarquee from './AppMarquee'
-import AppDemo from './AppDemo'
 
 const HeroTitle = () => {
   return (
@@ -25,7 +24,6 @@ export function Hero() {
         </div>
       </Container>
       <AppMarquee />
-      <AppDemo />
     </div>
   )
 }
