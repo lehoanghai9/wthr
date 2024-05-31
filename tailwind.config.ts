@@ -34,14 +34,17 @@ export default {
         '4xl': '2rem',
         '5xl': '2.5rem',
       },
+      boxShadow: {
+        'primary-glow': 'rgba(192, 255, 115, 0.25) 0px 0px 12px 0px',
+      },
       colors: ({ colors }) => ({
         gray: colors.neutral,
-        "background": "#121212",
-        "highlight-primary": "#C0FF73",
-        "text-primary": "#FFFFFF",
-        "text-secondary": "#C8C8C8",
-        "border-primary": "#2B2B2B",
-        "card-background": "#171717"
+        background: '#121212',
+        'highlight-primary': '#C0FF73',
+        'text-primary': '#FFFFFF',
+        'text-secondary': '#C8C8C8',
+        'border-primary': '#2B2B2B',
+        'card-background': '#171717',
       }),
       fontFamily: {
         sans: 'var(--font-inter)',

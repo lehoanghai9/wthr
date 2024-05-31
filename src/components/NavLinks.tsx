@@ -13,7 +13,7 @@ export function NavLinks() {
     <Link
       key={label}
       href={href}
-      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 font-semibold text-text-primary transition-colors delay-150 hover:delay-0"
+      className={`relative -mx-3 -my-2 rounded-lg px-3 py-2 font-semibold transition-colors duration-200 ${activeIndex === index && "text-background"}`}
       onMouseEnter={() => {
         if (timeoutRef.current) {
           window.clearTimeout(timeoutRef.current)

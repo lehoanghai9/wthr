@@ -9,10 +9,8 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 export default function Home() {
   return (
     <>
-      <div className='h-[600px] bg-white'>h-[] </div>
-      <div className='h-[9000px] bg-black'>h-[] </div>
-      {/* <Hero />
-      <PrimaryFeatures />
+      <Hero />
+      {/* <PrimaryFeatures />
       <SecondaryFeatures />
       <CallToAction />
       <Reviews />

@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Button } from '@/components/Button'
 import { Logo } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
+import { navlinks } from '@/lib/constants'
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -47,7 +49,7 @@ function MobileNavLink(
   return (
     <PopoverButton
       as={Link}
-      className="block text-base leading-7 tracking-tight text-gray-700"
+      className="text-2xl font-bold leading-7 tracking-tight text-text-primary flex justify-between"
       {...props}
     />
   )
@@ -55,22 +57,22 @@ function MobileNavLink(
 
 export function Header() {
   return (
-    <header className='w-full flex justify-center pt-6'>
-      <nav className="fixed z-50 flex justify-between rounded-full bg-[#121212]/75 py-4 px-8">
-        <div className="relative z-10 flex items-center gap-16">
+    <header className="flex w-full justify-center">
+      <nav className="fixed z-50 mt-6 flex w-[95%] shadow-primary-glow md:shadow-none justify-between rounded-full bg-[#121212]/75 px-8 py-4 md:w-auto mx-4 backdrop-blur-md">
+        <div className="relative z-10 flex items-center gap-6">
           <Link href="/" aria-label="Home">
             <Logo className="h-6 w-auto" />
           </Link>
-          <div className="hidden lg:flex lg:gap-10">
+          <div className="hidden md:flex md:gap-10">
             <NavLinks />
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <Popover className="lg:hidden">
+          <Popover className="md:hidden ">
             {({ open }) => (
               <>
                 <PopoverButton
-                  className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 ui-not-focus-visible:outline-none"
+                  className="relative z-10  inline-flex items-center rounded-lg stroke-highlight-primary p-2 hover:bg-highlight-primary/50 active:stroke-highlight-primary ui-not-focus-visible:outline-none"
                   aria-label="Toggle site navigation"
                 >
                   {({ open }) =>
@@ -84,42 +86,35 @@ export function Header() {
                 <AnimatePresence initial={false}>
                   {open && (
                     <>
-                      <PopoverOverlay
+                      {/* <PopoverOverlay
                         static
                         as={motion.div}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur"
-                      />
+                        className="fixed inset-0 z-0 bg-[#121212]/75 backdrop-blur"
+                      /> */}
                       <PopoverPanel
                         static
                         as={motion.div}
-                        initial={{ opacity: 0, y: -32 }}
+                        initial={{ opacity: 0, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{
                           opacity: 0,
-                          y: -32,
+                          y: 0,
                           transition: { duration: 0.2 },
                         }}
-                        className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                        className="absolute inset-x-0 top-0 z-0 origin-top rounded-[36px] bg-background px-8 pb-6 pt-24 shadow-gray-900/20"
                       >
-                        <div className="space-y-4">
-                          <MobileNavLink href="/#features">
-                            Features
-                          </MobileNavLink>
-                          <MobileNavLink href="/#reviews">
-                            Reviews
-                          </MobileNavLink>
-                          <MobileNavLink href="/#pricing">
-                            Pricing
-                          </MobileNavLink>
-                          <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
+                        <div className="space-y-6">
+                          {navlinks.map(({ label, href }) => (
+                            <MobileNavLink href={href} key={label}>
+                              {label}
+                              <ChevronRightIcon className="aspect-square w-6" />
+                            </MobileNavLink>
+                          ))}
                         </div>
                         <div className="mt-8 flex flex-col gap-4">
-                          <Button href="/login" variant="outline">
-                            Log in
-                          </Button>
                           <Button href="#">Download the app</Button>
                         </div>
                       </PopoverPanel>
