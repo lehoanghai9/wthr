@@ -1,14 +1,15 @@
 'use client'
-import Image, { StaticImageData } from 'next/image'
+import { StaticImageData } from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-import iphoneMockup from '@/images/iphoneFrame.webp'
 import clsx from 'clsx'
 import appScreenshot1 from '@/images/app-screenshots/screenshot1.webp'
 import appScreenshot2 from '@/images/app-screenshots/screenshot2.webp'
 import appScreenshot3 from '@/images/app-screenshots/screenshot3.webp'
 import appScreenshot4 from '@/images/app-screenshots/screenshot4.webp'
+import appScreenshot5 from '@/images/app-screenshots/screenshot5.webp'
+import appScreenshot6 from '@/images/app-screenshots/screenshot6.webp'
 import AppDemo from './AppDemo'
-import { FadeIn } from './FadeIn'
+import { FadeIn, FadeInStagger } from './FadeIn'
 
 interface AppColumnProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -26,8 +27,6 @@ const AppColumn: React.FC<AppColumnProps> = ({
   let [columnHeight, setColumnHeight] = useState(0)
   let duration = `${columnHeight * msPerPixel}ms`
 
-  console.log(columnHeight)
-  console.log(duration)
   useEffect(() => {
     if (!columnRef.current) {
       return
@@ -48,7 +47,7 @@ const AppColumn: React.FC<AppColumnProps> = ({
     <div
       ref={columnRef}
       style={{ '--marquee-duration': duration } as React.CSSProperties}
-      className={clsx('h-fit animate-marquee space-y-6 py-4', className)}
+      className={clsx('h-fit animate-marquee space-y-6 py-3', className)}
       {...props}
     >
       <div className="rotate-180">
@@ -79,30 +78,40 @@ const OverLay = () => {
 
 const AppMarquee = () => {
   return (
-    <FadeIn>
+    <FadeIn y={0}>
       <div className="relative flex w-full justify-center overflow-hidden">
         <OverLay />
         <div className="flex h-[700px] w-[1200px] flex-shrink-0 rotate-180 justify-center gap-6 overflow-hidden">
-          <AppColumn
-            msPerPixel={12}
-            screenShots={[appScreenshot4, appScreenshot3]}
-          />
-          <AppColumn
-            msPerPixel={8}
-            screenShots={[appScreenshot1, appScreenshot2]}
-          />
-          <AppColumn
-            msPerPixel={6}
-            screenShots={[appScreenshot2, appScreenshot1]}
-          />
-          <AppColumn
-            msPerPixel={10}
-            screenShots={[appScreenshot4, appScreenshot3]}
-          />
-          <AppColumn
-            msPerPixel={14}
-            screenShots={[appScreenshot2, appScreenshot1]}
-          />
+          <FadeIn y={12} delay={0.5}>
+            <AppColumn
+              msPerPixel={12}
+              screenShots={[appScreenshot6, appScreenshot5]}
+            />
+          </FadeIn>
+          <FadeIn y={24} delay={0.3}>
+            <AppColumn
+              msPerPixel={7}
+              screenShots={[appScreenshot4, appScreenshot2]}
+            />
+          </FadeIn>
+          <FadeIn y={48}>
+            <AppColumn
+              msPerPixel={6}
+              screenShots={[appScreenshot6, appScreenshot1]}
+            />
+          </FadeIn>
+          <FadeIn y={124} delay={0.3}>
+            <AppColumn
+              msPerPixel={9}
+              screenShots={[appScreenshot5, appScreenshot3]}
+            />
+          </FadeIn>
+          <FadeIn y={12} delay={0.5}>
+            <AppColumn
+              msPerPixel={10}
+              screenShots={[appScreenshot4, appScreenshot2]}
+            />
+          </FadeIn>
         </div>
       </div>
     </FadeIn>

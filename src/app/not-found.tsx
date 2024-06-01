@@ -15,7 +15,7 @@ export default function NotFound() {
         <p className="mt-2 text-lg text-gray-600">
           Sorry, we couldn’t find the page you’re looking for.
         </p>
-        <Button href="/" variant="outline" className="mt-8">
+        <Button href="/" className="mt-8">
           Go back home
         </Button>
       </Container>

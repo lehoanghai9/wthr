@@ -31,6 +31,7 @@ export default {
         'spin-reverse-slower': 'spin-reverse 6s linear infinite',
       },
       borderRadius: {
+        universal: '25px',
         '4xl': '2rem',
         '5xl': '2.5rem',
       },

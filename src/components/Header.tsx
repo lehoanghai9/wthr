@@ -49,7 +49,7 @@ function MobileNavLink(
   return (
     <PopoverButton
       as={Link}
-      className="text-2xl font-bold leading-7 tracking-tight text-text-primary flex justify-between"
+      className="flex justify-between text-2xl font-bold leading-7 tracking-tight text-text-primary"
       {...props}
     />
   )
@@ -58,7 +58,12 @@ function MobileNavLink(
 export function Header() {
   return (
     <header className="flex w-full justify-center">
-      <nav className="fixed z-50 mt-6 flex w-[95%] shadow-primary-glow md:shadow-none justify-between rounded-full bg-[#121212]/75 px-8 py-4 md:w-auto mx-4 backdrop-blur-md">
+      <motion.nav
+        initial={{ opacity: 0, y: -24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, bounce: false, duration: 0.4 }}
+        className="shadow-primary-glow fixed z-50 mx-4 mt-6 flex w-[95%] justify-between rounded-full bg-[#121212]/75 px-8 py-4 backdrop-blur-md md:w-auto md:shadow-none"
+      >
         <div className="relative z-10 flex items-center gap-6">
           <Link href="/" aria-label="Home">
             <Logo className="h-6 w-auto" />
@@ -125,7 +130,7 @@ export function Header() {
             )}
           </Popover>
         </div>
-      </nav>
+      </motion.nav>
     </header>
   )
 }
