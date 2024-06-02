@@ -9,7 +9,7 @@ import appScreenshot4 from '@/images/app-screenshots/screenshot4.webp'
 import appScreenshot5 from '@/images/app-screenshots/screenshot5.webp'
 import appScreenshot6 from '@/images/app-screenshots/screenshot6.webp'
 import AppDemo from './AppDemo'
-import { FadeIn, FadeInStagger } from './FadeIn'
+import { FadeIn } from './FadeIn'
 
 interface AppColumnProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string

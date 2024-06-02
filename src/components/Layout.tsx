@@ -6,7 +6,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       <main className="flex-auto pt-[120px]">{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

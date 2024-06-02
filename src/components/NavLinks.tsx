@@ -1,33 +1,23 @@
 'use client'
 
-import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import { navlinks } from '@/lib/constants'
+import { useInViewSection } from '@/hooks/useInViewSection'
 
 export function NavLinks() {
-  let [activeIndex, setHoveredIndex] = useState<number | null>(null)
-  let timeoutRef = useRef<number | null>(null)
+  const sectionInView = useInViewSection()
 
-  return navlinks.map(({ label, href }, index) => (
+  return navlinks.map(({ label, href }) => (
     <Link
       key={label}
       href={href}
-      className={`relative -mx-3 -my-2 rounded-lg px-3 py-2 font-semibold transition-colors duration-200 ${activeIndex === index && "text-background"}`}
-      onMouseEnter={() => {
-        if (timeoutRef.current) {
-          window.clearTimeout(timeoutRef.current)
-        }
-        setHoveredIndex(index)
-      }}
-      onMouseLeave={() => {
-        timeoutRef.current = window.setTimeout(() => {
-          setHoveredIndex(null)
-        }, 200)
-      }}
+      className={`relative -mx-3 -my-2 rounded-lg px-3 py-2 font-semibold transition-colors duration-200 ${
+        '/#' + sectionInView === href && 'text-background'
+      }`}
     >
       <AnimatePresence>
-        {activeIndex === index && (
+        {'/#' + sectionInView === href && (
           <motion.span
             className="absolute inset-0 rounded-full bg-highlight-primary"
             layoutId="hoverBackground"

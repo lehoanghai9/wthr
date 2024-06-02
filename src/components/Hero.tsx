@@ -24,12 +24,14 @@ export function Hero() {
     <div className="overflow-hidden pt-10">
       <FadeInStagger>
         <Container>
-          <div className="flex flex-col items-center space-y-10">
+          <section id="hero" className="flex flex-col items-center space-y-10">
             <HeroTitle />
             <FadeIn>
-              <Button className="z-20">Download</Button>
+              <Button href="#download" className="z-20">
+                Download
+              </Button>
             </FadeIn>
-          </div>
+          </section>
         </Container>
         <AppMarquee />
       </FadeInStagger>

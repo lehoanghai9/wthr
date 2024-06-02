@@ -1,8 +1,7 @@
-import Blog from '@/components/Blog'
+
 import { CallToAction } from '@/components/CallToAction'
 import Download from '@/components/Download'
 import Faq from '@/components/Faq'
-import { Faqs } from '@/components/Faqs'
 import Features from '@/components/Features'
 import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
@@ -18,7 +17,6 @@ export default function Home() {
       <Features />
       <Testimonials />
       <Faq />
-      <Blog />
       <Download />
       {/* <PrimaryFeatures />
       <SecondaryFeatures />
