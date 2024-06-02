@@ -5,4 +5,4 @@ export const satoshi = localFont({ src: './Satoshi-Variable.woff2' })
 
 export const jakarta = localFont({ src: './PlusJakartaSans-Variable.woff2' })
 
-export const wix = Wix_Madefor_Display({ subsets: ['latin'] })
+export const wix = localFont({ src: './WixMadeforText-VariableFont_wght.ttf' })
